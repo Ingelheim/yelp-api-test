@@ -10,9 +10,9 @@ client = Yelp::Client.new({ consumer_key: "uxydoO3kzohti6K37kmptw",
                             token_secret: "yZPH4CwQ1vQCHf10bH5qjYd5HqQ"
                           })
 
-get '/location/:location/search/:term' do
+get '/location' do
   content_type :json
   result = client.search(params['location'], { term: params['term'], sort: 0, limit: 20})
-  # Business_DTO.from_result(result)
+
   JSON_Parser.serialize_yelp_result(result)
 end
